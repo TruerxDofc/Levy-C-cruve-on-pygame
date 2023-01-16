@@ -67,9 +67,9 @@ def main():
             pg.time.delay(100)
         if pressed_key[pg.K_LEFT]:
             SCALE -= 5
-        if pressed_key[pg.K_RIGHT]: #
+        if pressed_key[pg.K_RIGHT]:
             SCALE += 5
-        if pressed_key[pg.K_w]: # перемещение вверх
+        if pressed_key[pg.K_w]:
             DELT_POS_Y -= 5
         if pressed_key[pg.K_s]:
             DELT_POS_Y += 5
@@ -83,7 +83,7 @@ def main():
             DELT_POS_X = 0
             DELT_POS_Y = 0
 
-        fractal(ITERATION, (WIGHT / 2) + DELT_POS_X, WIGHT / 2 + SCALE + DELT_POS_X, (HEIGHT / 2) + DELT_POS_Y, HEIGHT / 2 + DELT_POS_Y) # x2 - это размер фрактала, x1 - это начало координат
+        fractal(ITERATION, (WIGHT / 2) + DELT_POS_X, WIGHT / 2 + SCALE + DELT_POS_X, (HEIGHT / 2) + DELT_POS_Y, HEIGHT / 2 + DELT_POS_Y)
         pg.display.set_caption('Levy C curve on pygame')
         pg.display.update()
         display.fill(BLACK)
