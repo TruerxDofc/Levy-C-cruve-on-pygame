@@ -1,4 +1,5 @@
 import pygame as pg
+
 pg.font.init()
 
 WIGHT, HEIGHT = 1366, 720
@@ -21,20 +22,17 @@ FPS_FONT = pg.font.SysFont('timesnewroman', 20)
 
 
 def fractal(ITERATION, x1, x2, y1, y2):
-    x3 = 0.
-    y3 = 0.
     if ITERATION == 0:
         pg.draw.line(display, WHITE, (x1, y1), (x2, y2))
     else:
         x3 = (x1 + x2) / 2 + (y2 - y1) / 2
         y3 = (y1 + y2) / 2 - (x2 - x1) / 2
 
-        fractal(ITERATION-1, x1, x3, y1, y3)
-        fractal(ITERATION-1, x3, x2, y3, y2)
+        fractal(ITERATION - 1, x1, x3, y1, y3)
+        fractal(ITERATION - 1, x3, x2, y3, y2)
 
 
 def main():
-
     global ITERATION, SCALE, DELT_POS_X, DELT_POS_Y
 
     run = 1
@@ -53,7 +51,7 @@ def main():
         display.blit(tip_text, (10, 30))
         title_text = TITLE_FONT.render(
             "Lévy C curve", True, WHITE)
-        display.blit(title_text, (WIGHT/2, HEIGHT-30))
+        display.blit(title_text, (WIGHT / 2, HEIGHT - 30))
         fps_text = FPS_FONT.render(
             f'FPS: {clock.get_fps() :.2f}', True, WHITE)
         display.blit(fps_text, (10, HEIGHT - 30))
@@ -83,12 +81,14 @@ def main():
             DELT_POS_X = 0
             DELT_POS_Y = 0
 
-        fractal(ITERATION, (WIGHT / 2) + DELT_POS_X, WIGHT / 2 + SCALE + DELT_POS_X, (HEIGHT / 2) + DELT_POS_Y, HEIGHT / 2 + DELT_POS_Y)
+        fractal(ITERATION, (WIGHT / 2) + DELT_POS_X, WIGHT / 2 + SCALE + DELT_POS_X, (HEIGHT / 2) + DELT_POS_Y,
+                HEIGHT / 2 + DELT_POS_Y)
         pg.display.set_caption('Levy C curve on pygame')
         pg.display.update()
         display.fill(BLACK)
 
     pg.quit()
+
 
 if __name__ == "__main__":
     main()
