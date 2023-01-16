@@ -1,1 +1,1 @@
-# Levy-C-cruve-on-pygame
+This code was written in the PyCharm IDE using the 'pygame' library
