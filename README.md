@@ -1,3 +1,3 @@
 # Levy C curve
-This code was written in the PyCharm IDE using the 'pygame' library
+This code was written in the PyCharm IDE using the 'pygame' library \n
 here is the link to the video on youtube: https...
