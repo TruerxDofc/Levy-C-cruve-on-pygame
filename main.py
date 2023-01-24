@@ -2,8 +2,8 @@ import pygame as pg  # import the "pygame" library as "pg" (for fewer letters in
 
 pg.font.init()  # initialize the font module
 
-WIGHT, HEIGHT = 1366, 720  # set display size
-display = pg.display.set_mode((WIGHT, HEIGHT))  # !!
+WIDTH, HEIGHT = 1366, 720  # set display size
+display = pg.display.set_mode((WIDTH, HEIGHT))  # creating a display with a given width and height
 
 WHITE = (255, 255, 255)  # for simplify
 BLACK = (0, 0, 0)  # for simplify
@@ -14,7 +14,7 @@ DELT_POS_X = 0  # set global variables
 DELT_POS_Y = 0  # set global variables
 
 FPS = 45  # set a frame per second limit (for understanding)
-clock = pg.time.Clock()  #  !!
+clock = pg.time.Clock()  # set "clock" for create an object to help track time
 
 ITERATION_FONT = pg.font.SysFont('timesnewroman', 20)  # set font for our iteration text
 TIP_FONT = pg.font.SysFont('timesnewroman', 20)  # set font for our tip(restart) text
@@ -22,15 +22,15 @@ TITLE_FONT = pg.font.SysFont('timesnewroman', 20)  # set font for our title text
 FPS_FONT = pg.font.SysFont('timesnewroman', 20)  # set font for our fps counter text
 
 
-def fractal(ITERATION, x1, x2, y1, y2):  # here our fractal function
-    if ITERATION == 0:  #
-        pg.draw.line(display, WHITE, (x1, y1), (x2, y2))  #
-    else:  #
-        x3 = (x1 + x2) / 2 + (y2 - y1) / 2  #
-        y3 = (y1 + y2) / 2 - (x2 - x1) / 2  #
+def fractal(iteration, x1, x2, y1, y2):  # here our fractal function
+    if iteration == 0:  
+        pg.draw.line(display, WHITE, (x1, y1), (x2, y2)) 
+    else:  
+        x3 = (x1 + x2) / 2 + (y2 - y1) / 2
+        y3 = (y1 + y2) / 2 - (x2 - x1) / 2
 
-        fractal(ITERATION - 1, x1, x3, y1, y3)  #
-        fractal(ITERATION - 1, x3, x2, y3, y2)  #
+        fractal(iteration - 1, x1, x3, y1, y3)
+        fractal(iteration - 1, x3, x2, y3, y2)
 
 
 def main():  # here our main function
@@ -40,7 +40,7 @@ def main():  # here our main function
     while run:  # main program loop
 
         clock.tick(FPS)  # immediate frame limit
-        for event in pg.event.get():  # !!!
+        for event in pg.event.get():  # loop for check some events
             if event.type == pg.QUIT:  # if you click on the cross next to the window, the program ends
                 run = 0  # main loop is dead
 
@@ -54,7 +54,7 @@ def main():  # here our main function
 
         title_text = TITLE_FONT.render(
             "Lévy C curve", True, WHITE)  # set value and color for title text
-        display.blit(title_text, (WIGHT / 2, HEIGHT - 30))  # drawing text with given coordinates
+        display.blit(title_text, (WIDTH / 2, HEIGHT - 30))  # drawing text with given coordinates
 
         fps_text = FPS_FONT.render(
             f'FPS: {clock.get_fps() :.2f}', True, WHITE)  # set value and color for fps counter text
@@ -93,7 +93,7 @@ def main():  # here our main function
             DELT_POS_X = 0
             DELT_POS_Y = 0
 
-        fractal(ITERATION, (WIGHT / 2) + DELT_POS_X, WIGHT / 2 + SCALE + DELT_POS_X, (HEIGHT / 2) + DELT_POS_Y,
+        fractal(ITERATION, (WIDTH / 2) + DELT_POS_X, WIDTH / 2 + SCALE + DELT_POS_X, (HEIGHT / 2) + DELT_POS_Y,
                 HEIGHT / 2 + DELT_POS_Y)  # calling the fractal function every frame
         pg.display.set_caption('Levy C curve on pygame')  # window title (optional)
         pg.display.update()  # display update every frame
@@ -104,3 +104,5 @@ def main():  # here our main function
 
 if __name__ == "__main__":  # for more correct code
     main()
+    
+    # by Truer
