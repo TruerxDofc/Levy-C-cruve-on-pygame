@@ -13,5 +13,5 @@ Controls:
 "Arrow up" - increase the number of iterations, 
 "Arrow down" - decrease the number of iterations
 
-"Right arrow" - decrease the fractal size, 
-"Left arrow" - increase the fractal size
+"Right arrow" - increase the fractal size, 
+"Left arrow" - decrease the fractal size
